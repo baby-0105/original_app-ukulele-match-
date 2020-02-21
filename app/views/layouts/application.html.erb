@@ -17,12 +17,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
   </head>
 
+  <%= render 'layouts/navbar' %> <!---->
   <body>
-    <%= render 'layouts/navbar' %> <!---->
-
-    <div class="container">
+    <div class="container body-container">
       <%= render 'layouts/flash_messages' %><!---->
-
       <%= yield %>
     </div>
   </body>

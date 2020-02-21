@@ -1,0 +1,30 @@
+<div class="user-class">
+  <div class="row mx-auto border border-secondary rounded text-center p-3 mt-5">
+    <div class="col-4">
+      <div>
+        <p class="rounded-circle"><%= link_to '#', @user %></p>
+      </div>
+      <div>
+        <%= @user.name %>
+      </div>
+      <div class="d-flex justify-content-around">
+        <%= @user.prefecture %>
+        <%= @user.year %><!--#-->
+      </div>
+      <div class="d-flex justify-content-around">
+        <%= link_to 'フォロー' , class: 'btn btn-secondary'%> <!--あとで_path書く-->
+        <%= link_to 'フォロワー' , class: 'btn btn-secondary'%> <!--#-->
+      </div>
+    </div>
+    
+    <div class="col-8 d-flax flex-column justify-content-betweend">
+        <div class="bg-light rounded">
+          <%= @user.introduce %>
+        </div>
+        <div class="d-flex justify-content-around align-items-center">
+          <%= link_to 'フォローする！', users_path, class: 'btn btn-primary' %> <!--#-->
+          <%= link_to 'ダイレクトメッセージ' %>
+        </div>
+    </div>
+  </div>
+</div>

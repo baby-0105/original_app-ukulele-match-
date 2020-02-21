@@ -1,0 +1,24 @@
+<% if @users.any? %>
+  <ul class="list-unstyled user-class">
+    <% @users.each do |user| %>
+      <li class="row w-50 mx-auto border border-secondary mt-5 rounded text-center p-3">
+        <div class="col-6">
+          <div>
+            <p class="rounded-circle"><%= link_to '#', user_path(user) %></p>
+          </div>
+          <div>
+            <%= user.name %>
+          </div>
+        </div>
+        <div class="col-6">
+            <%= user.prefecture%>
+            <%= user.year%><!--#-->
+            <%= link_to 'フォローする！', users_path, class: 'btn btn-primary' %> <!--#-->
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+    <h1 class="row text-center mt-5">ユーザーが存在しません。</h1>
+  <%= paginate users %>
+<% end %>
