@@ -1,0 +1,23 @@
+<h1 class="text-center">フォロワー一覧</h1>
+
+<% if @followers.any? %>
+    <% @followers.each do |follower| %>
+      <%= link_to user_path(follower), class:"user-index row w-50 mx-auto border border-secondary mt-5 rounded text-center p-3 bg-light text-dark" do %>
+        <div class="col-6">
+          <div>
+            <p class="small-picture"><%= image_tag follower.picture.url if follower.picture? %> <p>
+          </div>
+          <div>
+            <%= follower.name %>
+          </div>
+        </div>
+        <div class="col-6">
+            <p><%= follower.prefecture %></p>
+            <p><%= follower.year%></p>
+            <%= render 'relationships/follow_button', user: follower %>
+        </div>
+    <% end %>
+  <% end %>
+<% else %>
+    <h1 class="jumbotron text-center text-danger mt-5 opacity-class">フォロワーが存在しません。</h1>
+<% end %>

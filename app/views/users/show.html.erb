@@ -1,30 +1,36 @@
-<div class="user-class">
-  <div class="row mx-auto border border-secondary rounded text-center p-3 mt-5">
+<div>
+  <div class="row mx-auto border border-secondary rounded text-center p-3 bg-light text-dark">
     <div class="col-4">
-      <div>
-        <p class="rounded-circle"><%= link_to '#', @user %></p>
-      </div>
-      <div>
+      <p class="small-picture"><%= image_tag @user.picture.url if @user.picture? %></p>
+      <div class="user-show-name">
         <%= @user.name %>
       </div>
-      <div class="d-flex justify-content-around">
-        <%= @user.prefecture %>
-        <%= @user.year %><!--#-->
+      <div class="d-flex justify-content-around m-3 user-show-int">
+        <span><%= @user.prefecture%></span>
+        <span><%= @user.year %></span>
       </div>
       <div class="d-flex justify-content-around">
-        <%= link_to 'フォロー' , class: 'btn btn-secondary'%> <!--あとで_path書く-->
-        <%= link_to 'フォロワー' , class: 'btn btn-secondary'%> <!--#-->
+        <%= link_to 'フォロー' , followings_user_path, class: 'btn btn-secondary'%> <!--あとで_path書く-->
+        <%= link_to 'フォロワー' , followers_user_path, class: 'btn btn-secondary'%> <!--#-->
       </div>
     </div>
     
     <div class="col-8 d-flax flex-column justify-content-betweend">
-        <div class="bg-light rounded">
-          <%= @user.introduce %>
+      <div class="bg-dark rounded text-light text-left p-3 mb-4" style="height:190px;" >
+        <%= @user.introduce %>
+      </div>
+      <% if current_user.id == @user.id %>
+        <div class='text-center'>
+          <%= link_to 'Change', edit_user_path, class:'btn btn-warning btn-lg' %>
         </div>
+      <% else %>
         <div class="d-flex justify-content-around align-items-center">
-          <%= link_to 'フォローする！', users_path, class: 'btn btn-primary' %> <!--#-->
-          <%= link_to 'ダイレクトメッセージ' %>
+          <%= render 'relationships/follow_button', user: @user %>
+          <%= link_to user_messages_path(@user) do%>
+            <i class="far fa-envelope text-center display-4 text-secondary"></i>
+          <% end %>
         </div>
+      <% end %>
     </div>
   </div>
 </div>

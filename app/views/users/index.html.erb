@@ -1,24 +1,25 @@
 <% if @users.any? %>
-  <ul class="list-unstyled user-class">
-    <% @users.each do |user| %>
-      <li class="row w-50 mx-auto border border-secondary mt-5 rounded text-center p-3">
-        <div class="col-6">
-          <div>
-            <p class="rounded-circle"><%= link_to '#', user_path(user) %></p>
-          </div>
-          <div>
-            <%= user.name %>
-          </div>
+  <% @users.each do |user| %>
+    <div class="row w-50 mx-auto border border-secondary mt-5 rounded text-center p-3 bg-light text-dark">
+      <%= link_to user_path(user), class:"col-6 user-show-link" do %>
+        <div class="user-index">
+          <p class="small-picture"><%= image_tag user.picture.url if user.picture? %><p>
         </div>
-        <div class="col-6">
-            <%= user.prefecture%>
-            <%= user.year%><!--#-->
-            <%= link_to 'フォローする！', users_path, class: 'btn btn-primary' %> <!--#-->
+        <div class="user-name">
+          <%= user.name %>
         </div>
-      </li>
-    <% end %>
-  </ul>
+        <div class="hidden-class">
+          <p class="hidden-text text-center">クリックする！</p>
+        </div>
+      <% end %>
+        <div class="user-intro col-6 d-flex flex-column justify-content-between">
+          <p><%= user.prefecture %></p>
+          <p><%= user.year%></p>
+          <%= render 'relationships/follow_button', user: user %>
+        </div>
+    </div>
+  <% end %>
 <% else %>
-    <h1 class="row text-center mt-5">ユーザーが存在しません。</h1>
+  <h1 class="jumbotron text-center text-danger mt-5 opacity-class">ユーザーが存在しません。</h1>
   <%= paginate users %>
 <% end %>

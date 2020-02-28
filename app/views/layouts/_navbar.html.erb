@@ -2,22 +2,35 @@
 	<div class="container-fuild">
 		<nav class="navbar navbar-expand-md sticky-top navbar-dark text-right">
 			<% if logged_in? %>
-				<a class="navbar-brand" href="users">Ukulele Match</a>
+				<%= link_to 'Ukulele Match', users_path, class: 'navbar-brand' %>
 			<% else %>
-				<a class="navbar-brand" href="/">Ukulele Match</a>
+				<%= link_to 'Ukulele Match', root_path, class: 'navbar-brand' %>
 			<% end %>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#menu" type="button">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div id="menu" class="collapse navbar-collapse text-center h5">
-				<ul class="navbar-nav ml-auto">
+				<ul class="navbar-nav ml-auto d-flex align-items-center">
 					<% if logged_in? %>
-	          <li class="nav-item border-bottom border-success mr-3 mr-lg-4"><%= link_to 'User icon', users_path(current_user), class: 'nav-link' %></li>
-	          <li class="nav-item border-bottom border-success mr-3 mr-lg-4"><%= link_to 'Message', users_path(current_user), class: 'nav-link' %></li>
-	          <li class="nav-item border-bottom border-success mr-3 mr-lg-4"><%= link_to 'Log out', logout_path, class: 'nav-link', method: :delete %></li>
-        	<% else %>
-						<li class="nav-item border-bottom border-success mr-3 mr-lg-4"><%= link_to 'Log in', login_path, class:'nav-link' %></li>
-						<li class="nav-item border-bottom border-success mr-3 mr-lg-4"><%= link_to 'Sign up', users_path, class:'nav-link'%></li>
+	          <li class="nav-icon nav-item mr-3 mr-lg-4">
+	        		<%= link_to user_path(current_user) do%>
+	          		<%= image_tag current_user.picture.url if current_user.picture? %>
+	          	<% end %>
+	          </li>
+	          <li class="nav-item mr-3 mr-lg-4">
+	        		<%= link_to user_messages_path(current_user), class: 'nav-link' do %>
+	          		<i class="far fa-envelope text-center"></i>
+	          		<span class="row nav-samll-text mx-0">message</span>
+	          	<% end %>
+	          </li>
+	          <li class="nav-item mr-3 mr-lg-4"><%= link_to 'Log out', logout_path, class: 'nav-link', method: :delete %></li>
+        			<% else %>
+        				<% unless request.path.include?("login") %>
+							<li class="nav-item border-bottom border-success mr-3 mr-lg-4"><%= link_to 'Log in', login_path, class:'nav-link' %></li>
+						<% end %>
+						<% unless request.path.include?("signup") || request.path.include?("users/new")%>
+							<li class="nav-item border-bottom border-success mr-3 mr-lg-4"><%= link_to 'Sign up', new_user_path, class:'nav-link'%></li>
+						<% end %>
 					<% end %>
 				</ul>
 			</div>	

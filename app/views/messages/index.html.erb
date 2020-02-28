@@ -1,0 +1,40 @@
+<h2 class='text-center mb-5 display-4'><%=@user.name%>さんとのトーク</h2>
+<div class='talk-room border border-secondary py-5 px-4 text-dark'>
+    <% user = User.find_by(id: @message.receive_user_id) %>
+    <% @messages.each do |message| %>
+        <% if message.user == current_user %>
+            <div class='row mb-4 d-flex flex-row-reverse'>
+                <div class="col-1 mb-0">
+                    <p class="small-talk-picture mb-0"><%= link_to image_tag message.user.picture.url if message.user.picture? %></p>
+                        <p class='m-0'><%= link_to message.user.name, user_path(message.user) %></p>
+                </div>
+                <div class="col-11 text-right">
+                    <div class='talk-text'>
+                        <%= message.content %><br>
+                    </div>
+                </div>
+            </div>
+        <% else %>
+            <div class='row mb-4'>
+                <div class="col-1 mb-0">
+                    <p class="small-talk-picture mb-0"><%= link_to image_tag message.user.picture.url if message.user.picture? %></p>
+                    <p class='m-0'><%= link_to message.user.name, user_path(message.user) %></p>
+                </div>
+                <div class="col-11 text-left">
+                    <div class='talk-text'>
+                        <%= message.content %><br>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+<div class='row mt-5 d-flex align-items-center'>
+    <h4 class='col-2 mb-0'>メッセージ</h4>
+    <div class='col-10'>
+        <%= form_with(model: @messages, local: true,:url => {:action => :create}) do |f| %> 
+            <%= f.text_field :content, class:'p-2' %>
+            <%= f.submit '送信' ,class:'btn btn-primary'%>
+        <% end %>
+    </div>
+</div>

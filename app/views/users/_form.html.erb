@@ -1,4 +1,59 @@
-<div class="field">
-  <%= form.label :picture %>
-  <%= form.file_field :picture %>
-</div>
+    <%= form_with(model: @user, local: true) do |f| %>
+        <% render 'layouts/error_messages', model: f.object%>
+        <% if @user.errors.any? %>
+          <div id="error_explanation" class="alert alert-warning">
+            <ul>
+              <% @user.errors.full_messages.each do |use| %>
+                <li><%= use %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      
+      <div class="form-group mb-4">
+        <%= f.label :name, 'ユーザー名' %>
+        <%= f.text_field :name, class: 'form-control', placeholder:'ユーザー名' %>
+      </div>
+
+      <div class="form-group mb-4">
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.email_field :email, class: 'form-control', placeholder:'メールアドレス'%>
+      </div>
+
+      <div class="form-group mb-4">
+        <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password, class: 'form-control', placeholder:'パスワード'%>
+      </div>
+
+      <div class="form-group mb-4">
+        <%= f.label :password_confirmation, 'パスワード（確認）' %>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder:'パスワード（確認）' %>
+      </div>
+      
+      <div class="form-group mb-4">
+        <%= f.label :prefecture, '都道府県' %>
+        <%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group mb-4">
+        <%= f.label :year, 'ukulele歴' %>
+        <%= f.text_field :year, class: 'form-control', placeholder:'ukulele歴' %>
+      </div>
+      
+      <div class="form-group mb-4">
+        <%= f.label :introduce, '自己紹介' %>
+        <%= f.text_area :introduce, class: 'form-control pb-5', placeholder:'自己紹介' %>
+      </div>
+      
+      <div class="form-group mb-4"> <!--後変更-->
+        <%= f.label :picture, 'プロフィール画像' %>
+        <%= f.file_field :picture, class: 'form-control'  %>
+      </div>
+      <div class='mb-5'>
+        <% if logged_in? %>
+          <%= f.submit 'Change', class: 'btn btn-primary btn-block'%>
+        <% else %>
+          <%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    <% end %>

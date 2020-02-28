@@ -2,6 +2,116 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body{
+  	background-image: image-url("youth-570881_1920.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    color: white;
+}
+
 .body-container{
-  padding-top:100px;
+  padding-top: 100px;
+  margin-bottom: 100px;
+}
+
+.opacity-class{
+  opacity : 0.7; 
+}
+
+.nav-samll-text{
+  font-size: 13px;
+}
+
+.nav-icon img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.nav-icon img:hover{
+  opacity: 0.7;
+}
+
+.small-picture img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.user-name{
+  font-size: 30px;
+  color: black;
+}
+
+.user-intro{
+  font-size: 20px;
+}
+
+.user-show-link{
+  overflow: hidden;
+  position: relative;
+}
+
+.user-show-link:hover{
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+.hidden-class{
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	background-color: rgba(0,0,0,0.4);	
+	transition: all 0.2s;
+	display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hidden-class:hover{
+  opacity: 1;
+}
+
+.hidden-text{
+  color: white;
+  font-size: 35px;
+}
+
+.user-show-name{
+  font-size: 35px;
+}
+
+.user-show-int{
+  font-size: 23px;
+}
+
+.talk-room{
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.talk-room a{
+  color: black;
+}
+
+.talk-room a{
+  text-decoration: none;
+}
+
+.small-talk-picture img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 0;
+}
+
+.talk-text{
+  font-size: 20px;
 }

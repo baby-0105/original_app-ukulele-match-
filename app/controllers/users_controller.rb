@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :show, :edit, :update]
   
   def index
-    @users=User.order(id: :desc).page(params[:page]).per(20)
+    @users=User.order(id: :desc).page(params[:page]).per(20).where.not(id: current_user.id)
   end
 
   def show
-    @user=User.find(params[:id])
+    set_user
   end
 
   def new
@@ -25,14 +25,38 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    set_user
+  end
+  
+  def update
+    set_user
+    
+    if @user.update(user_params)
+      flash[:success]='ユーザー情報の編集をしました。'
+      redirect_to user_path
+    else
+      flash.now[:danger]='ユーザー情報の編集に失敗しました。'
+      render edit_user_path
+    end
+  end
+  
+  def followings
+    set_user
+    @followings = @user.followings.page(params[:page])
+  end
+  
+  def followers
+    set_user
+    @followers = @user.followers.page(params[:page])
+  end
+  
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :prefecture, :year, :introduce, :picture)
+      params.require(:user).permit(:name, :email, :password, :prefecture, :year, :introduce, :picture)
     end
 end

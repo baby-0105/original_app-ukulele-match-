@@ -1,0 +1,23 @@
+<h1 class="text-center">フォロー一覧</h1>
+
+<% if @followings.any? %>
+    <% @followings.each do |following| %>
+      <%= link_to user_path(following),class:"user-index row w-50 mx-auto border border-secondary mt-5 rounded text-center p-3 bg-light text-dark" do %>
+        <div class="col-6">
+          <div>
+            <p class="small-picture"><%= image_tag following.picture.url if following.picture? %> <p>
+          </div>
+          <div>
+            <%= following.name %>
+          </div>
+        </div>
+        <div class="col-6">
+            <p><%= following.prefecture %></p>
+            <p><%= following.year%></p>
+            <%= render 'relationships/follow_button', user: following %>
+        </div>
+    <% end %>
+  <% end %>
+<% else %>
+    <h1 class="jumbotron text-center text-danger mt-5 opacity-class">フォローユーザーが存在しません。</h1>
+<% end %>
