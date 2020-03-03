@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :require_user_logged_in, only: [:index]
+  
   def index
     set_user
     send_ids = current_user.messages.where(receive_user_id: @user.id).pluck(:id) #
