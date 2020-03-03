@@ -4,9 +4,10 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :email
       t.string :password_digest
-      t.string :prefecture
-      t.integer :year
+      t.integer :prefecture
+      t.string :year
       t.string :introduce
+      t.string :picture
 
       t.timestamps
     end

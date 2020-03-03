@@ -43,12 +43,12 @@ class UsersController < ApplicationController
   
   def followings
     set_user
-    @followings = @user.followings.page(params[:page])
+    @followings = @user.followings.page(params[:page]).per(20)
   end
   
   def followers
     set_user
-    @followers = @user.followers.page(params[:page])
+    @followers = @user.followers.page(params[:page]).per(20)
   end
   
   private

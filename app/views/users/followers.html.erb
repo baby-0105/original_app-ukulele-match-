@@ -2,12 +2,12 @@
 
 <% if @followers.any? %>
     <% @followers.each do |follower| %>
-      <%= link_to user_path(follower), class:"user-index row w-50 mx-auto border border-secondary mt-5 rounded text-center p-3 bg-light text-dark" do %>
+      <%= link_to user_path(follower), class:"user-index row mx-auto border border-secondary mt-5 p-3 rounded text-center bg-light text-dark" do %>
         <div class="col-6">
           <div>
-            <p class="small-picture"><%= image_tag follower.picture.url if follower.picture? %> <p>
+            <p class="small-picture"><%= image_tag follower.picture.url if follower.picture? %></p>
           </div>
-          <div>
+          <div class='user-index-name'>
             <%= follower.name %>
           </div>
         </div>

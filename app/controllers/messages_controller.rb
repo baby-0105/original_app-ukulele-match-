@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
+    set_user
     send_ids = current_user.messages.where(receive_user_id: @user.id).pluck(:id) #
     receive_ids = @user.messages.where(receive_user_id: current_user.id).pluck(:id)
     @messages = Message.where(id: send_ids + receive_ids)
@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    set_user
     @message = current_user.messages.build(message_params)
     @message.receive_user_id = @user.id
     
@@ -21,8 +21,12 @@ class MessagesController < ApplicationController
   end
   
   private
+  
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :receive_user_id, :user_id)
   end
 end

@@ -10,9 +10,17 @@ body{
     color: white;
 }
 
+a:hover{
+  text-decoration: none;
+}
+
 .body-container{
   padding-top: 100px;
   margin-bottom: 100px;
+}
+
+.user-index{
+  width: 50%;
 }
 
 .opacity-class{
@@ -57,7 +65,6 @@ body{
   background-color: rgba(0,0,0,0.3);
   border-radius: 10px;
   transition: 0.5s;
-  text-decoration: none;
 }
 
 .hidden-class{
@@ -88,30 +95,144 @@ body{
 }
 
 .user-show-int{
-  font-size: 23px;
+  font-size: 18px;
+}
+
+.user-show-introduce{
+  height: 190px;
+  padding: 10px;
+}
+
+.message-icon{
+  font-size: 60px;
+}
+
+.user-index{
+  font-size: 25px;
+}
+
+.form-parent{
+  position: relative;
+}
+  
+.submit-btn{
+  position:absolute;
+  right: 15px;
 }
 
 .talk-room{
-  background-color: rgba(255,255,255,0.8);
-  border-radius: 10px;
-  text-align: center;
+  padding: 12px;
 }
 
-.talk-room a{
-  color: black;
+@media(max-width:1024px){
+  .user-index{
+    width: 100%;
+    margin: 0;
+  }
+  
+  .user-show img{
+    width: 80px;
+    height: 80px;
+  }
+  
+  .follow-button a{
+    font-size: 18px;
+    padding: 5px;
+  }
+  
+  .talk-room{
+    padding: 8px;
+  }
 }
 
-.talk-room a{
-  text-decoration: none;
+@media(max-width:767px){
+  .user-index{
+    width: 90%;
+    margin: 0;
+  }
+  
+  .user-index-name{
+    font-size: 25px;
+  }
+  
+  .user-name,
+  .user-intro,
+  .user-show-name{
+    font-size: 25px;
+  }
+  
+  .user-intro input{
+    font-size: 10px;
+  }
+  
+  .user-show img{
+    width: 60px;
+    height: 60px;
+  }
+  
+  .user-index img{
+    width: 80px;
+    height: 80px;
+    border: solid 5px black;
+  }
+  
+  .user-show-int{
+    font-size: 15px;
+  }
+  
+  .follow-button a{
+    font-size: 15px;
+    padding: 1px;
+    margin-bottom: 10px;
+  }
+  
+  .user-show-introduce{
+    height: 150px;
+    padding: 5px;
+  }
+  
+  .message-icon{
+    font-size: 50px;
+  }
+  
+  .follow-button{
+    font-size: 11px;
+    padding: 5px;
+  }
+  
+  .talk-room{
+    padding: 5px;
+  }
 }
 
-.small-talk-picture img{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-bottom: 0;
-}
-
-.talk-text{
-  font-size: 20px;
+@media(max-width: 568px){
+  .talk-top{
+    font-size: 25px;
+  }
+  
+  .talk-name{
+    font-size: 12px;
+  }
+  
+  .top-page{
+    position: relative;
+    top: 40px;
+  }
+  
+  .small-talk-picture img{
+    width: 30px;
+    height: 30px;
+  }
+  
+  .talk-text{
+    font-size: 10px;
+  }
+  
+  .talk-form h4{
+    font-size: 18px;
+  }
+  
+  .text_field{
+    width: 70%;
+  }
 }

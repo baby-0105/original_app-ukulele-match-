@@ -1,3 +1,43 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.talk-room{
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.talk-room a{
+  color: black;
+}
+
+.small-talk-picture img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 0;
+}
+
+.talk-text{
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  padding: 5px;
+}
+
+.text_field{
+  padding: 6px;
+  width: 80%;
+}
+
+.submit-btn{
+  text-align: right;
+  font-size: 17px;
+}
+
+.letter-icon:hover{
+  color: blue;
+}

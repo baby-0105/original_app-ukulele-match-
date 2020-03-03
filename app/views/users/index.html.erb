@@ -1,15 +1,15 @@
 <% if @users.any? %>
   <% @users.each do |user| %>
-    <div class="row w-50 mx-auto border border-secondary mt-5 rounded text-center p-3 bg-light text-dark">
+    <div class="user-index row mx-auto border border-secondary mt-5 rounded text-center p-3 bg-light text-dark">
       <%= link_to user_path(user), class:"col-6 user-show-link" do %>
-        <div class="user-index">
-          <p class="small-picture"><%= image_tag user.picture.url if user.picture? %><p>
+        <div>
+          <p class="small-picture"><%= image_tag user.picture.url if user.picture? %></p>
         </div>
         <div class="user-name">
           <%= user.name %>
         </div>
         <div class="hidden-class">
-          <p class="hidden-text text-center">クリックする！</p>
+          <p class="hidden-text text-center">詳しく見る！</p>
         </div>
       <% end %>
         <div class="user-intro col-6 d-flex flex-column justify-content-between">
@@ -21,5 +21,5 @@
   <% end %>
 <% else %>
   <h1 class="jumbotron text-center text-danger mt-5 opacity-class">ユーザーが存在しません。</h1>
-  <%= paginate users %>
+  <%= paginate @users %>
 <% end %>

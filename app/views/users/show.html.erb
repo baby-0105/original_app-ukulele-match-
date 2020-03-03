@@ -1,22 +1,24 @@
 <div>
-  <div class="row mx-auto border border-secondary rounded text-center p-3 bg-light text-dark">
-    <div class="col-4">
+  <div class="user-show row mx-auto border border-secondary rounded text-center p-3 bg-light text-dark">
+    <div class="col-4 p-0">
       <p class="small-picture"><%= image_tag @user.picture.url if @user.picture? %></p>
       <div class="user-show-name">
         <%= @user.name %>
       </div>
-      <div class="d-flex justify-content-around m-3 user-show-int">
+      <div class="d-flex justify-content-around user-show-int">
         <span><%= @user.prefecture%></span>
+      </div>
+      <div class='user-show-int mb-2 mb-md-4'>
         <span><%= @user.year %></span>
       </div>
-      <div class="d-flex justify-content-around">
-        <%= link_to 'フォロー' , followings_user_path, class: 'btn btn-secondary'%> <!--あとで_path書く-->
-        <%= link_to 'フォロワー' , followers_user_path, class: 'btn btn-secondary'%> <!--#-->
+      <div class="follow-button">
+        <%= link_to 'フォロー' , followings_user_path, class: 'btn btn-secondary'%> 
+        <%= link_to 'フォロワー' , followers_user_path, class: 'btn btn-secondary'%> 
       </div>
     </div>
     
-    <div class="col-8 d-flax flex-column justify-content-betweend">
-      <div class="bg-dark rounded text-light text-left p-3 mb-4" style="height:190px;" >
+    <div class="col-8 d-flax flex-column justify-content-betweend p-0">
+      <div class="user-show-introduce bg-dark rounded text-light text-left mb-4">
         <%= @user.introduce %>
       </div>
       <% if current_user.id == @user.id %>
@@ -25,9 +27,10 @@
         </div>
       <% else %>
         <div class="d-flex justify-content-around align-items-center">
-          <%= render 'relationships/follow_button', user: @user %>
-          <%= link_to user_messages_path(@user) do%>
-            <i class="far fa-envelope text-center display-4 text-secondary"></i>
+          <div><%= render 'relationships/follow_button', user: @user %></div>
+          <%= link_to user_messages_path(@user) do %>
+            <i class="message-icon far fa-envelope text-center text-secondary"></i><span class="badge badge-danger"><%= @count_receiced_messages %></span>
+            <!--それぞれのユーザーごとの未読メッセージ-->
           <% end %>
         </div>
       <% end %>
