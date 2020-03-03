@@ -23,5 +23,8 @@
   <% end %>
 <% else %>
   <h1 class="jumbotron text-center text-danger mt-5 opacity-class">ユーザーが存在しません。</h1>
-  <%= paginate @users %>
 <% end %>
+
+<div class='mt-5'>
+  <%= will_paginate @users, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+</div>

@@ -58,7 +58,8 @@ group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end
 
-gem 'kaminari'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap4'
 
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'cloudinary'
