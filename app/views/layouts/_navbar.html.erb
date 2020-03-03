@@ -17,12 +17,6 @@
 	          		<%= image_tag current_user.picture.url if current_user.picture? %>
 	          	<% end %>
 	          </li>
-	          <!--<li class="nav-item mr-3 mr-lg-4">
-	        		<%#= link_to user_message_path(current_user), class: 'nav-link' do %>
-	          		<i class="far fa-envelope text-center"></i>
-	          		<span class="row nav-samll-text mx-0">message</span>
-	          	<%# end %>
-	          </li>-->
 	          <li class="nav-item mr-3 mr-lg-4"><%= link_to 'Log out', logout_path, class: 'nav-link', method: :delete %></li>
         			<% else %>
         				<% unless request.path.include?("login") %>
