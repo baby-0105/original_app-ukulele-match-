@@ -28,7 +28,7 @@
       <% else %>
         <div class="d-flex justify-content-around align-items-center">
           <div><%= render 'relationships/follow_button', user: @user %></div>
-          <%= link_to user_messages_path(@user) do %>
+          <%= link_to user_message_path(@user) do %>
             <i class="message-icon far fa-envelope text-center text-secondary"></i><span class="badge badge-danger"><%= @count_receiced_messages %></span>
             <!--それぞれのユーザーごとの未読メッセージ-->
           <% end %>

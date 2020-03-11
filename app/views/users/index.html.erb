@@ -1,3 +1,5 @@
+<%= render 'search' %>
+
 <h1 class='text-center'>ユーザー　一覧</h1>
 
 <% if @users.any? %>
@@ -26,5 +28,5 @@
 <% end %>
 
 <div class='mt-5'>
-  <%= will_paginate @users, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+  <%= will_paginate @users, :previous_label => '&lt 前へ', :next_label => '次へ &gt' %>
 </div>

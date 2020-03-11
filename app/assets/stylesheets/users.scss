@@ -1,12 +1,16 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html{
+  height: auto;
+}
 
 body{
   	background-image: image-url("youth-570881_1920.jpg");
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
+    height: auto;
     color: white;
 }
 
@@ -21,6 +25,15 @@ a:hover{
 
 .pagenation{
   margin: 0 auto;
+}
+
+.fa-envelope{
+  font-size: 40px;
+  color: rgba(255,255,255,0.5);
+}
+
+.fa-envelope:hover{
+  color: rgba(255,255,255,0.8);
 }
 
 .user-index{
@@ -127,6 +140,12 @@ a:hover{
 
 .talk-room{
   padding: 12px;
+}
+
+.no-user{
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 10px;
+  padding: 20px;
 }
 
 @media(max-width:1024px){

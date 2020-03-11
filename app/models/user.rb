@@ -6,6 +6,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :year, presence: true, length: { maximum: 5 }
   validates :introduce, presence: true, length: { maximum: 240 }
+  validates :picture, presence: true
   
   has_secure_password
   
@@ -41,6 +42,14 @@ class User < ApplicationRecord
       self.messages.find_or_create_by(receive_user_id: other_user.id, content: content)
     end
   end
+  
+  #def self.search(search)
+    #if search
+      #User.where(['name LIKE ? OR year LIKE ? OR prefecture LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+    #else
+      #User.all
+    #end
+  #end
   
   enum prefecture: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

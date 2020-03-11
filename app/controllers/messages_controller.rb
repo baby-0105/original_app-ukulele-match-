@@ -3,10 +3,9 @@ class MessagesController < ApplicationController
   
   def index
     set_user
-    send_ids = current_user.messages.where(receive_user_id: @user.id).pluck(:id) #
-    receive_ids = @user.messages.where(receive_user_id: current_user.id).pluck(:id)
-    @messages = Message.where(id: send_ids + receive_ids)
+    all_messages
     @message = Message.new
+    @messages_users = current_user.messages.build(params[:id]) #現在のユーザーがメッセージをやりとりしているユーザーすべて
   end
 
   def create
@@ -22,10 +21,24 @@ class MessagesController < ApplicationController
     end
   end
   
+  def show
+    set_user
+    all_messages
+    @message = Message.new
+  end
+  
   private
   
   def set_user
     @user = User.find(params[:user_id])
+  end
+  
+  def all_messages
+    @user = User.find(params[:user_id])
+    send_messages = current_user.messages.where(receive_user_id: @user.id)
+    receive_messages = @user.messages.where(receive_user_id: current_user.id)
+    @messages = Message.where(id: send_messages + receive_messages)
+    @or_messages = Message.where(id: send_messages || receive_messages)
   end
 
   def message_params

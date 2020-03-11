@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="ja">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,11 +17,12 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
   </head>
 
-  <%= render 'layouts/navbar' %> <!---->
   <body>
+    <%= render 'layouts/navbar' %> <!---->
     <div class="container body-container">
       <%= render 'layouts/flash_messages' %><!---->
       <%= yield %>
     </div>
+    <%#= render 'layouts/footer' %>
   </body>
 </html>

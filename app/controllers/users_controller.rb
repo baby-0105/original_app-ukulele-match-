@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :edit, :update]
   
   def index
-    @users=User.order(id: :desc).paginate(page: params[:page], per_page: 10).where.not(id: current_user.id)
+    @users=User.order(id: :desc).paginate(page: params[:page], per_page: 10).where.not(id: current_user.id)#.search(params[:search])
   end
 
   def show
