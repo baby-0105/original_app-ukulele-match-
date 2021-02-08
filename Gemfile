@@ -61,7 +61,7 @@ end
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 1.3'
 gem 'cloudinary'
 
 gem 'pry-byebug', group: :development
